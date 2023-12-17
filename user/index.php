@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <div class="user_meta">
         <h2>Hi User</h2>
         <div class="user_image">

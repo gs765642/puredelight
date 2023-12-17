@@ -1,3 +1,6 @@
 <?php
-
-define('TITLE', basename(__FILE__,'.php'));
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'project_puredelight';
+$mysqli = new mysqli($hostname, $username, $password, $database);
