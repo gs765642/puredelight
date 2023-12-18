@@ -38,12 +38,14 @@
             <div class="close_btn">
                 <a href="javscript:;">Close</a>
             </div>
-            <form method="post" id="add_item_to_menu">
+            <form id="add_item_to_menu" method="post" enctype="multipart/form-data">
                 <input type="text" name="item_name" id="item_name" placeholder="Item Name">
                 <input type="text" name="item_price" id="item_price" placeholder="Item Price">
-                <input type="file" name="item_image" id="item_image" placeholder="Item Image">
+                <input type="file" name="item_image" id="item_image">
                 <input type="text" name="item_description" id="item_description" placeholder="Item Description">
-                <input type="text" name="item_category" id="item_category" placeholder="Item Category">
+                <select name="item_category" id="item_category" placeholder="Item Category">
+                    <option value=""></option>
+                </select>
                 <select type="text" name="item_status" id="item_status" placeholder="Item Status">
                     <option value="">Item Status</option>
                     <option value="1">Active</option>
