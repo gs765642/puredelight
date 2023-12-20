@@ -1,4 +1,10 @@
-<?php include('header.php'); ?>
+<?php
+include('./config.php');
+include('header.php');
+$sql = "SELECT * FROM term_meta";
+$result = $mysqli->query($sql);
+
+?>
 
 <div>
     <div>
@@ -43,9 +49,33 @@
                 <input type="text" name="item_price" id="item_price" placeholder="Item Price">
                 <input type="file" name="item_image" id="item_image">
                 <input type="text" name="item_description" id="item_description" placeholder="Item Description">
-                <select name="item_category" id="item_category" placeholder="Item Category">
-                    <option value=""></option>
-                </select>
+                <ul>
+                    <?php
+                    if ($result) {
+                        while ($row = $result->fetch_assoc()) {
+                            $term_id = $row['term_id'];
+                            $term_name = $row['term_name'];
+
+                    ?>
+                            <li id="menu_item_category-<?= $term_id; ?>">
+                                <label>
+                                    <input value="<?= $term_id; ?>" type="checkbox" name="menu_category[]">
+                                    <?= $term_name; ?>
+                                </label>
+                            </li>
+                    <?php
+                        }
+                        $result->free();
+                    }
+                    ?>
+
+                    <li id="menu_item_category">
+                        <label>
+                            <input value="" type="checkbox" name="menu_category[]">
+                            Uncategory
+                        </label>
+                    </li>
+                </ul>
                 <select type="text" name="item_status" id="item_status" placeholder="Item Status">
                     <option value="">Item Status</option>
                     <option value="1">Active</option>

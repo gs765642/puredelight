@@ -7,6 +7,7 @@ include('./config.php');
 //     $sql = '
 //         CREATE TABLE IF NOT EXISTS menu_item (
 //             item_id INT AUTO_INCREMENT PRIMARY KEY,
+
 //             item_name VARCHAR(255) NOT NULL,
 //             item_price VARCHAR(255) NOT NULL,
 //             item_image VARCHAR(255),
@@ -15,16 +16,17 @@ include('./config.php');
 //             item_status VARCHAR(20)
 //         );
 
-//         CREATE TABLE IF NOT EXISTS term_meta (
-//             term_id INT AUTO_INCREMENT PRIMARY KEY,
-//             term_name VARCHAR(50) NOT NULL,
-//             term_slug VARCHAR(255),
-//             term_description VARCHAR(255)
-//         );
+// CREATE TABLE IF NOT EXISTS term_meta (
+//     term_id INT AUTO_INCREMENT PRIMARY KEY,
+//     term_name VARCHAR(50) NOT NULL,
+//     term_slug VARCHAR(255),
+//     term_description VARCHAR(255)
+// );
 
 //         CREATE TABLE IF NOT EXISTS signup (
 //             user_id INT AUTO_INCREMENT PRIMARY KEY,
 //             full_name VARCHAR(100) NOT NULL,
+//             user_name VARCHAR(255) NOT NULL,
 //             email VARCHAR(255) NOT NULL,
 //             password VARCHAR(255) NOT NULL
 //         );
@@ -82,6 +84,7 @@ function add_menu_item()
                 } else {
                     echo "Error: " . $stmt->error;
                 }
+
                 $stmt->close();
             }
         } else {
@@ -105,7 +108,8 @@ function add_category_term()
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ssss", $term_name, $term_slug, $term_description, $parent_term);
     if ($stmt->execute()) {
-        echo "Inserted successfully";
+        $id = $mysqli->insert_id;
+        echo "Inserted successfully id=" . $id;
     } else {
         echo "Error:" . $stmt->error;
     }

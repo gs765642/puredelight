@@ -4,11 +4,6 @@ include('./config.php');
 global $mysqli;
 $sql = "SELECT * FROM term_meta";
 $result = $mysqli->query($sql);
-
-
-
-
-
 ?>
 <?php include('./header.php'); ?>
 <div>
@@ -16,7 +11,7 @@ $result = $mysqli->query($sql);
         <form id="add_new_category" method="post">
             <input type="text" name="term_name" placeholder="Term Name">
             <input type="text" name="term_slug" placeholder="Term Slug">
-            <input type="text" name="term_description" placeholder="Term Description">
+            <textarea type="" name="term_description" placeholder="Term Description"></textarea>
             <select name="parent_term" id="">
                 <option value="0">None</option>
                 <?php
