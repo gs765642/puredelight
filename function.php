@@ -1,6 +1,104 @@
 <?php
 include('./config.php');
 
+function get_categories_menu_data(){
+    global $mysqli;
+    $query = $mysqli->query("SELECT * FROM  term_meta");
+    while ($data[] = $query->fetch_assoc()) {}
+
+    $data = buildNestedArray($data);
+    return $data;
+}
+
+function buildNestedArray($terms, $parentId = 0) {
+    $nestedArray = array();
+
+    foreach ($terms as $term) {
+        if ($term && @$term['parent_term'] == $parentId) {
+            $children = buildNestedArray($terms, $term['term_id']);
+            if (!empty($children)) {
+                $term['children'] = $children;
+            }
+            $nestedArray[] = $term;
+        }
+    }
+
+    return $nestedArray;
+}
+
+function buildMenu($terms){
+    $html = '';
+    foreach ($terms as $term) {
+        $hc = !empty(@$term['children']);
+        if(!$term){
+            continue;
+        }
+        if($hc){
+            
+            $html .= '
+            <li class="menu-has-children">
+            <a href="#">'.$term['term_name'].' <i class="fa-solid fa-chevron-down"></i></a>
+            ';
+        }else{
+            $html .= '
+            <li>
+            <a href="#">'.$term['term_name'].'</a>
+            ';
+
+        }
+
+        if ($term && $hc) {
+            $html .= '<ul class="sub-menu">';
+            // echo "<pre>";
+            // print_r(@$term['children']);
+            $html .= buildMenu(@$term['children'] ?? []);
+            $html .= '</ul>';
+        }else{
+            $html .= '</li>';
+        }
+    }
+
+    return $html;
+}
+
+function showMenu() {
+    $data = get_categories_menu_data();
+    $html = buildMenu($data);
+
+    return "<ul class='main-menu'>".$html.'</ul>';
+}
+
+function group_menu_categories($data = [], $result = []) {
+
+    foreach($data as $k => $term){
+        $parentTermId = $term['parent_term'];
+        $result[$parentTermId]['children'][] = $term;
+    
+        // if(empty($r['parent_term'])){
+        //     // parent
+        //     $result[$r['term_id']] = $r;
+        // }else{
+        //     if(isset($result[$k])){
+        //         $result[$k]['children'] = $r;
+        //     }
+        //     // if($k == $r['parent_term']){
+        //     //     $result[$k]['children'] = $r;
+        //     // }
+        //     // // child
+        //     // foreach($result as $k2 => $r2){
+        //     //     if($r['term_id'] == $k2){
+        //     //     }
+        //     // }
+        // }
+    }
+
+    
+    return $result;
+    
+    // group_menu_categories($data = []);
+}
+
+    
 
 function sign_up_user()
 {

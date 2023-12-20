@@ -3,7 +3,6 @@ include('./config.php');
 include('header.php');
 $sql = "SELECT * FROM term_meta";
 $result = $mysqli->query($sql);
-
 ?>
 
 <div>

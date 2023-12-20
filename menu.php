@@ -1,4 +1,10 @@
-<?php include('./header.php'); ?>
+<?php
+
+require_once('./config.php');
+
+require_once('./header.php');
+
+?>
 
 <section class="hero-sec">
     <div class="container">
@@ -16,30 +22,8 @@
     <div class="container">
         <div class="main-menu-wrapper d-flex">
             <div class="wrapper">
-                <h3>Menu</h3>
-                <ul class="main-menu">
-                    <li class="menu-has-children">
-                        <a href="#">Dish Type <i class="fa-solid fa-chevron-down"></i></a>
-                        <ul class="sub-menu">
-                            <li><a href="#">Appetizers & Snacks</a></li>
-                            <li><a href="#">Sandwiches</a></li>
-                            <li><a href="#">Pasta</a></li>
-                            <li><a href="#">pie</a></li>
-                            <li><a href="#">Cake</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-has-children">
-                        <a href="#">Meal Type <i class="fa-solid fa-chevron-down"></i></a>
-                        <ul class="sub-menu">
-                            <li><a href="#">Breakfast and Brunch</a></li>
-                            <li><a href="#">Dinners</a></li>
-                            <li><a href="#">Lunch</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Desserts & Drinks</a>
-                    </li>
-                </ul>
+                <h3>Menu S</h3>
+                <?php echo showMenu(); ?>
             </div>
             <div class="menu-dishes">
                 <div class="search-field">
@@ -73,19 +57,19 @@
                             <a href="#">Add to cart</a>
                         </div>
                     </div>
-                    <!-- <div class="sn-dish">
-                            <div class="dish-image">
-                                <img src="assets/images/air-fryer-tater-tots-ap.jpg">
-                            </div>
-                            <h4>Air Fryer Tater Tots</h4>
-                            <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(4.0)</p> 
-                            <p>by John Doe</p> 
-                            </div>
-                            <div class="btn-warp">
+                    <div class="sn-dish">
+                        <div class="dish-image">
+                            <img src="assets/images/air-fryer-tater-tots-ap.jpg">
+                        </div>
+                        <h4>Air Fryer Tater Tots</h4>
+                        <div class="rating">
+                            <p><i class="fa-solid fa-star"></i>(4.0)</p>
+                            <p>by John Doe</p>
+                        </div>
+                        <div class="btn-warp">
                             <a href="#">Add to cart</a>
-                            </div>
-                        </div> -->
+                        </div>
+                    </div>
                     <div class="sn-dish">
                         <div class="dish-image">
                             <img src="assets/images/grilled-cheese-sandwich-sw.jpg">
@@ -112,19 +96,19 @@
                             <a href="#">Add to cart</a>
                         </div>
                     </div>
-                    <!-- <div class="sn-dish">
-                            <div class="dish-image">
-                                <img src="assets/images/avocado-sandwich-sw.jpg">
-                            </div>
-                            <h4>Avocado Sandwich</h4>
-                            <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(4.3)</p> 
-                            <p>by John Doe</p> 
-                            </div>
-                            <div class="btn-warp">
+                    <div class="sn-dish">
+                        <div class="dish-image">
+                            <img src="assets/images/avocado-sandwich-sw.jpg">
+                        </div>
+                        <h4>Avocado Sandwich</h4>
+                        <div class="rating">
+                            <p><i class="fa-solid fa-star"></i>(4.3)</p>
+                            <p>by John Doe</p>
+                        </div>
+                        <div class="btn-warp">
                             <a href="#">Add to cart</a>
-                            </div>
-                        </div> -->
+                        </div>
+                    </div>
                     <div class="sn-dish">
                         <div class="dish-image">
                             <img src="assets/images/white-sause-pasta-p.jpg">
@@ -151,7 +135,7 @@
                             <a href="#">Add to cart</a>
                         </div>
                     </div>
-                    <!-- <div class="sn-dish">
+                     <div class="sn-dish">
                             <div class="dish-image">
                                 <img src="assets/images/black-pepper-pork-pasta_p.jpg">
                             </div>
@@ -163,7 +147,7 @@
                             <div class="btn-warp">
                             <a href="#">Add to cart</a>
                             </div>
-                        </div> -->
+                        </div> 
                     <div class="sn-dish">
                         <div class="dish-image">
                             <img src="assets/images/apple-pie-pi.jpg">
@@ -190,7 +174,7 @@
                             <a href="#">Add to cart</a>
                         </div>
                     </div>
-                    <!-- <div class="sn-dish">
+                     <div class="sn-dish">
                             <div class="dish-image">
                                 <img src="assets/images/strawberry-pie-pi.jpg">
                             </div>
@@ -202,7 +186,7 @@
                             <div class="btn-warp">
                             <a href="#">Add to cart</a>
                             </div>
-                        </div>  -->
+                        </div>  
                     <div class="sn-dish">
                         <div class="dish-image">
                             <img src="assets/images/black-forest-cake.jpg">
