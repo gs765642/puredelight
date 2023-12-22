@@ -38,7 +38,8 @@ include('./config.php');
 //             email VARCHAR(255) NOT NULL,
 //             address TEXT NOT NULL,
 //             payment_method VARCHAR(50) NOT NULL,
-//             payment_status VARCHAR(20) NOT NULL
+//             payment_status VARCHAR(20) NOT NULL,
+//             customer_id  VARCHAR(255) NOT NULL
 //         );
 //     ';
 

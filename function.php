@@ -113,7 +113,6 @@ function sign_up_user()
     $email = isset($_POST['email']) ? $_POST['email'] : "";
     $username = str_replace(' ', '_', $full_name) . rand(1, 1000);
     $sql = "INSERT INTO signup (full_name, user_name, email, password) VALUES (?, ?, ?, ?)";
-
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ssss", $full_name, $username, $email, $pass);
     if ($stmt->execute()) {
@@ -164,6 +163,8 @@ function add_to_cart_or_remove_product()
     if (!session_id()) {
         session_start();
     }
+    // echo $_POST['action'];
+    // echo session_id();
     switch ($_POST['action']) {
         case "add_to_cart":
             if (!empty($_POST['quantity']) && !empty($_POST['product'])) {
@@ -189,20 +190,48 @@ function add_to_cart_or_remove_product()
             }
             break;
         case "remove_cart_item":
-            if (!empty($_SESSION["cart_item"])) {
-                foreach ($_SESSION["cart_item"] as $k => $v) {
-                    if ($_POST["product_id"] == $k)
-                        unset($_SESSION["cart_item"][$k]);
-                    if (empty($_SESSION["cart_item"]))
-                        unset($_SESSION["cart_item"]);
+            if (!empty($_SESSION["cart_items"])) {
+                foreach ($_SESSION["cart_items"] as $k => $v) {
+                    if ($_POST["product"] == $k) {
+                        unset($_SESSION["cart_items"][$k]);
+                    }
+                    if (empty($_SESSION["cart_items"])) {
+
+                        unset($_SESSION["cart_items"]);
+                    }
                 }
             }
             break;
         case "empty_cart":
-            unset($_SESSION["cart_item"]);
+            unset($_SESSION["cart_items"]);
             break;
     }
 }
-if (isset($_POST['action']) && ($_POST['action'] == "add_to_cart" || $_POST['action'] == "remove_cart_item" || $_POST['action'] == "empty_cart")) {
+if (isset($_POST['action']) && ($_POST['action'] == "add_to_cart" || $_POST['action'] == "remove_cart_item")) {
     add_to_cart_or_remove_product();
+}
+
+
+function user_order_placed()
+{
+    global $mysqli;
+    $full_name = '';
+    $phone = '';
+    $email = '';
+    $address = '';
+    $payment_method = '';
+    $payment_status = '';
+    $customer_id = '';
+
+    $sql = "INSERT INTO orders (full_name, phone, email, address, payment_method, payment_status, customer_id) VALUES (?, ?, ?, ?,?, ?, ?)";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("sssssss", $full_name, $phone, $email, $phone, $address, $payment_method, $payment_status, $customer_id);
+    if ($stmt->execute()) {
+        echo "Order placed";
+    } else {
+    }
+    $stmt->close();
+}
+if (isset($_POST['action']) && $_POST['action'] == "order_placed") {
+    user_order_placed();
 }

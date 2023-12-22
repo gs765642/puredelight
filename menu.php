@@ -55,7 +55,7 @@ require_once('./header.php');
                             <p>by John Doe</p>
                         </div>
                         <div class="btn-warp">
-                            <input type="hidden" value="17">
+                            <input type="hidden" value="7">
                             <a href="#" class="add_to_cart">Add to cart</a>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ require_once('./header.php');
                             <p>by John Doe</p>
                         </div>
                         <div class="btn-warp">
-                            <input type="hidden" value="18">
+                            <input type="hidden" value="8">
                             <a href="#" class="add_to_cart">Add to cart</a>
                         </div>
                     </div>

@@ -224,6 +224,29 @@
             }
         })
     });
+    jQuery(document).on('change', '.delivery_info .payment .payment_info input[name="payment"]', function(e) {
+        let paymentMethod = jQuery(this).val();
+        if (paymentMethod.toLowerCase() == 'card') {
+            jQuery('.card_info').slideDown();
+        } else {
+            jQuery('.card_info').slideUp();
+        }
+    })
+    jQuery('form#order_place').submit(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        formData.append("action", "order_place");
+        jQuery.ajax({
+            url: "function.php",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    })
 </script>
 </body>
 

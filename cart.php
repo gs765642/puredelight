@@ -63,6 +63,7 @@ include('./header.php');
     if (!session_id()) {
         session_start();
     }
+    // echo session_id();
     ?>
     <div class="container">
         <h1>Your Cart</h1>
@@ -117,6 +118,4 @@ include('./header.php');
     </div>
 </section>
 
-
-<?php include('./footer.php'); ?>
 <?php include('./footer.php'); ?>
