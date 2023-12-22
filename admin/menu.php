@@ -1,41 +1,58 @@
 <?php
 include('./config.php');
 include('header.php');
-$sql = "SELECT * FROM term_meta";
+$sql = "SELECT * FROM taxonomy";
 $result = $mysqli->query($sql);
-?>
+$psql = "SELECT  * FROM products";
+$products = $mysqli->query($psql);
 
+?>
 <div>
     <div>
         <div class="add_item_btn">
             <button class="add_product">add item</button>
         </div>
-        <div class="table-items">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item Name</th>
-                        <th>Item Price</th>
-                        <th>Item Image</th>
-                        <th>Item Description</th>
-                        <th>Item Category</th>
-                        <th>Item Status</th>
-                        <th>Item Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Item Name</td>
-                        <td>Item Price</td>
-                        <td>Item Image</td>
-                        <td>Item Description</td>
-                        <td>Item Category</td>
-                        <td>Item Status</td>
-                        <td>Item Action</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <?php if ($products) { ?>
+            <div class="table-items">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Product Price</th>
+                            <th>Product Image</th>
+                            <th>Product Description</th>
+                            <th>Product Category</th>
+                            <th>Product Status</th>
+                            <th>Product Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($product = $products->fetch_assoc()) {
+                            // print_r($product);
+                            $item_id = $product['item_id'];
+                            $name = $product['item_name'];
+                            $price = $product['item_price'];
+                            $image = $product['item_image'];
+                            $description = $product['item_description'];
+                            $category = $product['item_category'];
+                            $status = $product['item_status'];
+                        ?>
+                            <tr>
+                                <td><?php echo $name; ?></td>
+                                <td><?php echo $price; ?></td>
+                                <td><?php echo $image; ?></td>
+                                <td><?php echo $description; ?></td>
+                                <td><?php echo $category; ?></td>
+                                <td><?php echo $status; ?></td>
+                                <td>Item Action</td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php $products->free();
+        } ?>
         <div class="add_item_btn">
             <button class="add_product">add item</button>
         </div>
@@ -47,7 +64,8 @@ $result = $mysqli->query($sql);
                 <input type="text" name="item_name" id="item_name" placeholder="Item Name">
                 <input type="text" name="item_price" id="item_price" placeholder="Item Price">
                 <input type="file" name="item_image" id="item_image">
-                <input type="text" name="item_description" id="item_description" placeholder="Item Description">
+                <img id="imgPreview" src="" alt="">
+                <textarea name="item_description" id="item_description" placeholder="Item Description"></textarea>
                 <ul>
                     <?php
                     if ($result) {
@@ -56,9 +74,9 @@ $result = $mysqli->query($sql);
                             $term_name = $row['term_name'];
 
                     ?>
-                            <li id="menu_item_category-<?= $term_id; ?>">
+                            <li id="products_category-<?= $term_id; ?>">
                                 <label>
-                                    <input value="<?= $term_id; ?>" type="checkbox" name="menu_category[]">
+                                    <input value="<?= $term_id; ?>" type="checkbox" name="item_category[]">
                                     <?= $term_name; ?>
                                 </label>
                             </li>
@@ -68,9 +86,9 @@ $result = $mysqli->query($sql);
                     }
                     ?>
 
-                    <li id="menu_item_category">
+                    <li id="products_category">
                         <label>
-                            <input value="" type="checkbox" name="menu_category[]">
+                            <input value="" type="checkbox" name="item_category[]">
                             Uncategory
                         </label>
                     </li>

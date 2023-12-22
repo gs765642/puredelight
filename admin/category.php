@@ -2,7 +2,7 @@
 
 include('./config.php');
 global $mysqli;
-$sql = "SELECT * FROM term_meta";
+$sql = "SELECT * FROM taxonomy";
 $result = $mysqli->query($sql);
 ?>
 <?php include('./header.php'); ?>

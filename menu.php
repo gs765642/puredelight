@@ -41,10 +41,11 @@ require_once('./header.php');
                             <p>by John Doe</p>
                         </div>
                         <div class="btn-warp">
-                            <a href="#">Add to cart</a>
+                            <a href="">Add to cart</a>
                         </div>
                     </div>
                     <div class="sn-dish">
+
                         <div class="dish-image">
                             <img src="assets/images/Samosa-recipe-ap.jpg">
                         </div>
@@ -54,10 +55,12 @@ require_once('./header.php');
                             <p>by John Doe</p>
                         </div>
                         <div class="btn-warp">
-                            <a href="#">Add to cart</a>
+                            <input type="hidden" value="17">
+                            <a href="#" class="add_to_cart">Add to cart</a>
                         </div>
                     </div>
                     <div class="sn-dish">
+
                         <div class="dish-image">
                             <img src="assets/images/air-fryer-tater-tots-ap.jpg">
                         </div>
@@ -67,10 +70,12 @@ require_once('./header.php');
                             <p>by John Doe</p>
                         </div>
                         <div class="btn-warp">
-                            <a href="#">Add to cart</a>
+                            <input type="hidden" value="18">
+                            <a href="#" class="add_to_cart">Add to cart</a>
                         </div>
                     </div>
                     <div class="sn-dish">
+                        
                         <div class="dish-image">
                             <img src="assets/images/grilled-cheese-sandwich-sw.jpg">
                         </div>
@@ -80,7 +85,8 @@ require_once('./header.php');
                             <p>by John Doe</p>
                         </div>
                         <div class="btn-warp">
-                            <a href="#">Add to cart</a>
+                            <input type="hidden" value="19">
+                            <a href="#" class="add_to_cart">Add to cart</a>
                         </div>
                     </div>
                     <div class="sn-dish">
@@ -135,19 +141,19 @@ require_once('./header.php');
                             <a href="#">Add to cart</a>
                         </div>
                     </div>
-                     <div class="sn-dish">
-                            <div class="dish-image">
-                                <img src="assets/images/black-pepper-pork-pasta_p.jpg">
-                            </div>
-                            <h4>Black Pepper Pork Pasta</h4>
-                            <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(5.0)</p> 
-                            <p>by John Doe</p> 
-                            </div>
-                            <div class="btn-warp">
+                    <div class="sn-dish">
+                        <div class="dish-image">
+                            <img src="assets/images/black-pepper-pork-pasta_p.jpg">
+                        </div>
+                        <h4>Black Pepper Pork Pasta</h4>
+                        <div class="rating">
+                            <p><i class="fa-solid fa-star"></i>(5.0)</p>
+                            <p>by John Doe</p>
+                        </div>
+                        <div class="btn-warp">
                             <a href="#">Add to cart</a>
-                            </div>
-                        </div> 
+                        </div>
+                    </div>
                     <div class="sn-dish">
                         <div class="dish-image">
                             <img src="assets/images/apple-pie-pi.jpg">
@@ -174,19 +180,19 @@ require_once('./header.php');
                             <a href="#">Add to cart</a>
                         </div>
                     </div>
-                     <div class="sn-dish">
-                            <div class="dish-image">
-                                <img src="assets/images/strawberry-pie-pi.jpg">
-                            </div>
-                            <h4>Strawberry Pie</h4>
-                            <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(3.9)</p> 
-                            <p>by John Doe</p> 
-                            </div>
-                            <div class="btn-warp">
+                    <div class="sn-dish">
+                        <div class="dish-image">
+                            <img src="assets/images/strawberry-pie-pi.jpg">
+                        </div>
+                        <h4>Strawberry Pie</h4>
+                        <div class="rating">
+                            <p><i class="fa-solid fa-star"></i>(3.9)</p>
+                            <p>by John Doe</p>
+                        </div>
+                        <div class="btn-warp">
                             <a href="#">Add to cart</a>
-                            </div>
-                        </div>  
+                        </div>
+                    </div>
                     <div class="sn-dish">
                         <div class="dish-image">
                             <img src="assets/images/black-forest-cake.jpg">

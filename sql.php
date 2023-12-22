@@ -1,4 +1,4 @@
-CREATE TABLE menu_item (
+CREATE TABLE products (
     item_id INT AUTO_INCREMENT PRIMARY KEY,
     item_name VARCHAR(255) NOT NULL,
     item_price VARCHAR(255) NOT NULL,
