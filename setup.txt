@@ -1,0 +1,6 @@
+1. Download and install XAMPP from the official server.
+2. Place the `puredelight.zip` file in the `htdocs` folder of the XAMPP installation directory.
+3. Extract the `puredelight.zip` file in the `htdocs` folder.
+4. Start the Apache and MySQL services using the XAMPP control panel.
+5. Open Google Chrome (or your preferred browser).
+6. Navigate to `http://localhost/puredelight` to access the project.

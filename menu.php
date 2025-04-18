@@ -1,9 +1,11 @@
 <?php
 
-require_once('./config.php');
+include('./header.php');
+include('./config.php');
 
-require_once('./header.php');
-
+global $mysqli;
+$psql = "SELECT  * FROM products WHERE item_status=1";
+$products = $mysqli->query($psql);
 ?>
 
 <section class="hero-sec">
@@ -27,150 +29,49 @@ require_once('./header.php');
             </div>
             <div class="menu-dishes">
                 <div class="search-field">
-                    <input type="search" placeholder="Search for recipes...">
+                    <input type="search" placeholder="Search for recipes..." name="item_search">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
-                <div class="dishes-wrapper">
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/parmesan-crusted-potatoes-ap.jpg">
-                        </div>
-                        <h4>Parmesan Crusted Potatoes</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(3.0)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <input type="hidden" value="7">
-                            <a href="#" class="add_to_cart">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/Samosa-recipe-ap.jpg">
-                        </div>
-                        <h4>Punjabi Samosa</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(3.5)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <input type="hidden" value="8">
-                            <a href="#" class="add_to_cart">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/grilled-cheese-sandwich-sw.jpg">
-                        </div>
-                        <h4>Grilled Cheese Sandwich</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(4.0)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <input type="hidden" value="9">
-                            <a href="#" class="add_to_cart">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/paneer-sandwich-sw.jpg">
-                        </div>
-                        <h4>Panner Sandwich</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(3.2)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <input type="hidden" value="9">
-                            <a href="#" class="add_to_cart">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/white-sause-pasta-p.jpg">
-                        </div>
-                        <h4>White Sause Pasta</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(4.9)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <a href="#">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/penne-pasta_p.jpg">
-                        </div>
-                        <h4>Penne Pasta</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(4.0)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <a href="#">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/apple-pie-pi.jpg">
-                        </div>
-                        <h4>Apple Pie</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(3.0)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <a href="#">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/pumpkin-pie-pi.jpg">
-                        </div>
-                        <h4>Pumpkin Pie</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(3.5)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <a href="#">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/black-forest-cake.jpg">
-                        </div>
-                        <h4>Black Forest Cake</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(4.0)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <a href="#">Add to cart</a>
-                        </div>
-                    </div>
-                    <div class="sn-dish">
-                        <div class="dish-image">
-                            <img src="assets/images/red-velet-cake.jpg">
-                        </div>
-                        <h4>Red Velvet Cake</h4>
-                        <div class="rating">
-                            <p><i class="fa-solid fa-star"></i>(4.2)</p>
-                            <p>by John Doe</p>
-                        </div>
-                        <div class="btn-warp">
-                            <a href="#">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
+                <?php if (!empty($products)) { ?>
+                    <div class="dishes-wrapper">
+                        <?php
+                        while ($product = $products->fetch_assoc()) {
+                            $item_id = $product['item_id'];
+                            $name = $product['item_name'];
+                            $price = $product['item_price'];
+                            $image = $product['item_image'];
+                            // $description = $product['item_description'];
+                            // $category = $product['item_category'];
+                            // $status = $product['item_status'];
 
+                        ?>
+                            <div class="sn-dish">
+                                <div class="dish-image">
+                                    <img class="item_image" src="admin/uploads/<?php echo $image; ?>" class="item_image">
+                                </div>
+                                <h4 class="item_name"><?php echo $name; ?></h4>
+                                <div class="rating">
+                                    <p><i class="fa-solid fa-star"></i>(3.0)</p>
+                                    <p class="main_price">
+                                        <span>$</span><span class="price"><?php echo $price; ?></span>
+                                    </p>
+                                </div>
+                                <div class="btn-warp">
+                                    <input type="hidden" value="<?php echo $item_id; ?>">
+                                    <a href="#" class="add_to_cart">Add to cart</a>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+                <div class="no_product_found" style="display: none;">
+                    Not Found
+                </div>
             </div>
         </div>
     </div>
 </section>
+
 <section class="menu-carousel-sec" style="background-image:url(./assets/images/ban2.png)">
     <div class="container">
         <h5>Today's Special</h5>
@@ -178,7 +79,7 @@ require_once('./header.php');
         <div class="owl-carousel owl-theme">
             <div class="item">
                 <div class="sn-item d-flex">
-                    <img src="assets/images/sushi-delight.jpg">
+                    <img class="item_image" src="assets/images/sushi-delight.jpg">
                     <div class="content-side">
                         <div class="title d-flex">
                             <h3>Sushi Lovers Delight</h3>
@@ -191,7 +92,7 @@ require_once('./header.php');
                     </div>
                 </div>
                 <div class="sn-item d-flex">
-                    <img src="assets/images/mixed-garden-salad.jpg">
+                    <img class="item_image" src="assets/images/mixed-garden-salad.jpg">
                     <div class="content-side">
                         <div class="title d-flex">
                             <h3>Mixed Garden Salad</h3>
@@ -206,7 +107,7 @@ require_once('./header.php');
             </div>
             <div class="item">
                 <div class="sn-item d-flex">
-                    <img src="assets/images/grilled-chicken-kebab.jpg">
+                    <img class="item_image" src="assets/images/grilled-chicken-kebab.jpg">
                     <div class="content-side">
                         <div class="title d-flex">
                             <h3>Grilled Chicken Kebab</h3>
@@ -219,7 +120,7 @@ require_once('./header.php');
                     </div>
                 </div>
                 <div class="sn-item d-flex">
-                    <img src="assets/images/chesse-burger-with-fries.jpg">
+                    <img class="item_image" src="assets/images/chesse-burger-with-fries.jpg">
                     <div class="content-side">
                         <div class="title d-flex">
                             <h3>Cheeseburger With Fries</h3>
@@ -234,7 +135,7 @@ require_once('./header.php');
             </div>
             <div class="item">
                 <div class="sn-item d-flex">
-                    <img src="assets/images/chicken-biryani.jpg">
+                    <img class="item_image" src="assets/images/chicken-biryani.jpg">
                     <div class="content-side">
                         <div class="title d-flex">
                             <h3>Chicken Briyani</h3>
@@ -247,7 +148,7 @@ require_once('./header.php');
                     </div>
                 </div>
                 <div class="sn-item d-flex">
-                    <img src="assets/images/brownie-with-blueberries.jpg">
+                    <img class="item_image" src="assets/images/brownie-with-blueberries.jpg">
                     <div class="content-side">
                         <div class="title d-flex">
                             <h3>Brownie With Blueberries</h3>
@@ -262,7 +163,7 @@ require_once('./header.php');
             </div>
             <div class="item">
                 <div class="sn-item d-flex">
-                    <img src="assets/images/the-caramel-apocalypse.jpg">
+                    <img class="item_image" src="assets/images/the-caramel-apocalypse.jpg">
                     <div class="content-side">
                         <div class="title d-flex">
                             <h3>The Caramel Apocalypse</h3>
@@ -275,7 +176,7 @@ require_once('./header.php');
                     </div>
                 </div>
                 <div class="sn-item d-flex">
-                    <img src="assets/images/soft-drinks.jpg">
+                    <img class="item_image" src="assets/images/soft-drinks.jpg">
                     <div class="content-side">
                         <div class="title d-flex">
                             <h3>Soft Drinks</h3>

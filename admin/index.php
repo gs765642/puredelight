@@ -1,14 +1,24 @@
 <?php include('header.php'); ?>
 
-<div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Admin Panel</h1>
+
+<main class="main">
+    <section class="admin-page-content">
+        <div class="container">
+            <div class="login-text">
+            </div>
+            <div class="dashboard-inner">
+               <h2>Dashboard</h2>
+               <ul>
+                    <li><a href="category.php">Category</a></li>
+                    <li><a href="./menu.php">Add items</a></li>
+                    <li><a href="./order.php">Order</a></li>
+                </li>
+               </ul>
             </div>
         </div>
-    </div>
+    </section>
+</main>
     
-</div>
+  
 
 <?php include('footer.php'); ?>

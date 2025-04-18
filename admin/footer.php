@@ -1,5 +1,3 @@
-</body>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,7 +25,7 @@
         // console.log();
         // console.log(formData)
         jQuery.ajax({
-            url: "function.php",
+            url: "config.php",
             type: "POST",
             data: formData,
             contentType: false,
@@ -44,7 +42,7 @@
         var formData = new FormData(this);
         formData.append("action", "add_term_category");
         jQuery.ajax({
-            url: "function.php",
+            url: "config.php",
             type: "POST",
             data: formData,
             contentType: false,
@@ -64,6 +62,33 @@
             }
         });
     });
+    jQuery(document).on("click", 'button.delete-item', function() {
+        let productID = jQuery(this).attr('data-item_id');
+        jQuery.ajax({
+            url: "config.php",
+            type: "POST",
+            data: {
+                action: "delete_product",
+                product_id: productID
+            },
+            beforeSend: function() {
+                jQuery('.add-item-wrapper').css({
+                    pointerEvents: 'none',
+                    opacity: 0.6
+                })
+            },
+            success: function(data) {
+                let redirectUrl = '<?php echo $_SERVER['PHP_SELF']; ?>';
+                setTimeout(function() {
+                    window.location.href = redirectUrl;
+                }, 2000)
+            }
+        });
+
+    })
+
+
+
     jQuery('textarea').tinymce({
         height: 500,
         width: 800,
@@ -82,9 +107,19 @@
         jQuery("#imgPreview").show();
         jQuery("#imgPreview").attr("src", imgURL);
     })
+
+
+
     // jQuery(document).on('keyup', 'textarea[name="item_description"]', function() {
 
     // })
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery("[data-fancybox]").fancybox();
+    });
+</script>
+</body>
 
 </html>
